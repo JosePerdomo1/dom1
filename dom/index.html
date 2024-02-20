@@ -21,10 +21,23 @@
     </ul>
     <p>Adiós</p>
   </div>
-  
+
   <script>
-    document.getElementById('borrarBtn').onclick = function() {
-  
+    document.getElementById('borrarBtn').onclick = function () {
+      let cuentaSpan = document.querySelector('li:nth-child(2) span');
+      if (cuentaSpan !== null) {
+        let cuentaText = cuentaSpan.textContent.trim();
+        if (cuentaText !== null && cuentaText !== "") {
+          let cuenta = parseInt(cuentaText);
+          cuentaSpan.textContent = cuenta + 1;
+        }
+      }
+
+
+      let emElements = document.querySelectorAll('em');
+      if (emElements.length > 0) {
+        emElements[0].parentNode.removeChild(emElements[0]);
+      }
     };
   </script>
 </body>
