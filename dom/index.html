@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documento DOM</title>
 </head>
+
 <body>
   <ul>
     <li>Gato <em>lindo</em></li>
@@ -12,7 +14,8 @@
   </ul>
   <div>
     <p><em>Hola</em></p>
-    <button id="borrarBtn">Borra</button>
+    <!-- paso 4 -->
+    <button id="borrar">Borra</button>
   </div>
   <div>
     <ul>
@@ -23,22 +26,29 @@
   </div>
 
   <script>
-    document.getElementById('borrarBtn').onclick = function () {
-      let cuentaSpan = document.querySelector('li:nth-child(2) span');
-      if (cuentaSpan !== null) {
-        let cuentaText = cuentaSpan.textContent.trim();
-        if (cuentaText !== null && cuentaText !== "") {
-          let cuenta = parseInt(cuentaText);
-          cuentaSpan.textContent = cuenta + 1;
+    //paso 5
+    document.getElementById('borrar').onclick = function () {
+      let contador = document.querySelector('li:nth-child(2) span');
+      if (contador !== null) {
+        let txtcontador = contador.textContent.trim();
+        if (txtcontador !== null && txtcontador !== "") {
+          let cuenta = parseInt(txtcontador);
+          contador.textContent = cuenta + 1;
         }
       }
-
-
-      let emElements = document.querySelectorAll('em');
-      if (emElements.length > 0) {
-        emElements[0].parentNode.removeChild(emElements[0]);
+      let ems = document.querySelectorAll('em');
+      if (ems.length > 0) {
+        ems[0].parentNode.removeChild(ems[0]);
       }
     };
+    // paso 6
+    let segundaLista = document.querySelector('div:nth-child(3) ul');
+    segundaLista.addEventListener('click', (event) => {
+      event.target.style.backgroundColor = 'yellow';
+
+      const botonBorrar = document.getElementById('borrar');
+      botonBorrar.style.color = botonBorrar.style.color === 'red' ? 'black' : 'red';
+    });
   </script>
 </body>
 </html>
